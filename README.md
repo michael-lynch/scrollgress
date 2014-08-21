@@ -49,7 +49,7 @@ height: "Npx"
 $(function() {
 	
 	$('.post').scrollgress({
-		height: 10px,
+		height: '10px',
 		color: '#990000',
 		success: function() {
 			console.log('Scrollgress has been initiated.');
