@@ -1,6 +1,8 @@
 #Scrollgress
 
-Inspired by [Pitchfork](http://pitchfork.com/features/staff-lists/9466-the-top-200-tracks-of-2010-2014/), Scrollgress is a simple, lightweight jQuery plugin used to display a progress bar at the top of the page that fills up as the user scrolls. Progress can be measured as the user scrolls the page or an element that has `overflow: scroll | auto` or `overflow-y: scroll | auto`.
+Inspired by [Pitchfork](http://pitchfork.com/features/staff-lists/9466-the-top-200-tracks-of-2010-2014/), Scrollgress is a simple, lightweight jQuery plugin used to display a progress bar at the top of the page that fills up as the user scrolls.
+
+Progress can be measured as the user scrolls the page or an element that has `overflow: scroll | auto` or `overflow-y: scroll | auto`.
 
 <a href="http://michael-lynch.github.io/scrollgress/" target="_blank">See a demo</a>
 
@@ -10,13 +12,17 @@ Inspired by [Pitchfork](http://pitchfork.com/features/staff-lists/9466-the-top-2
 
 Include jQuery and the plugin in the head or footer of your page.
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    
-    <script src="/js/plugins/scrollgress.js"></script>
+```html
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="/js/plugins/scrollgress.js"></script>
+```
     
 Initialize the plugin targeting the class, ID or element that you want to display the scroll progress of. 
 
-	$('body').scrollgress();
+```js
+$('body').scrollgress();
+```
 	
 ####Options
 
@@ -39,14 +45,16 @@ height: "Npx"
 
 #####Example:
 
-		$(function() {
-			
-			$('.post').scrollgress({
-				height: 10px,
-				color: #990000,
-				success: function() {
-					console.log('Scrollgress has been initiated.');
-				}
-			});
-				
-		});		
+```js
+$(function() {
+	
+	$('.post').scrollgress({
+		height: 10px,
+		color: #990000,
+		success: function() {
+			console.log('Scrollgress has been initiated.');
+		}
+	});
+		
+});
+```		
