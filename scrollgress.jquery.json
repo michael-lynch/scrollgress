@@ -1,0 +1,25 @@
+{
+	"name": "scrollgress",
+	"title": "Scrollgress",
+	"description": "A simple, lightweight jQuery plugin used to display a progress bar at the top of the page that fills up as the user scrolls.",
+	"keywords": [
+		"scrollgress",
+		"progress",
+		"scroll",
+		"feedback"
+	],
+	"version": "1.0.0",
+	"author": {
+		"name": "Michael Lynch",
+		"url": "http://michaelynch.com"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/michael-lynch/scrollgress/blob/master/LICENSE.md"
+		}
+	],
+	"dependencies": {
+		"jquery": ">=1.8"
+	}
+}
