@@ -2,7 +2,8 @@
 
 Inspired by [Pitchfork](http://pitchfork.com/features/staff-lists/9466-the-top-200-tracks-of-2010-2014/), Scrollgress is a simple, lightweight jQuery plugin used to display a progress bar at the top of the page that fills up as the user scrolls.
 
-Progress can be measured as the user scrolls the page or an element that has `overflow: scroll | auto` or `overflow-y: scroll | auto`.
+Progress can be measured as the user scrolls the page or an element that has 
+<br />`overflow: scroll | auto` or `overflow-y: scroll | auto`.
 
 <a href="http://michael-lynch.github.io/scrollgress/" target="_blank">See a demo</a>
 
