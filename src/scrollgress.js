@@ -74,11 +74,13 @@ Licensed under the MIT license
     	
     	elementToScroll.scroll(function(e) {
     	
-    		var amountScrolled = (hasOverflow) ? el.scrollTop() : e.originalEvent.pageY;
+    		var amountScrolled = (hasOverflow) ? el.scrollTop() : $(document).scrollTop();
 
     		// divide the amount of pixels scrolled by the total height to scroll minus the height of the window
     		// and round the result to two decimal places
     		var percentScrolled = ((amountScrolled / (heightToScroll - windowHeight)) * 100).toFixed(2);
+    		
+    		console.log(e.originalEvent);
     		
     		$('.scrollgress__progress').css({
         		width: percentScrolled + '%'
