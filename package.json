@@ -2,23 +2,14 @@
 	"name": "scrollgress",
 	"version": "2.0.0",
 	"homepage": "https://github.com/michael-lynch/scrollgress",
-	"authors": [
-		"Michael Lynch <mikethomaslynch@gmail.com>"
-	],
+	"author": "Michael Lynch <mikethomaslynch@gmail.com>",
 	"description": "A simple, lightweight jQuery plugin used to display a progress bar at the top of the page that fills up as the user scrolls",
-	"main": "src/scrollgress.js",
-	"keywords": [
-		"scrollgress",
-		"scroll",
-		"progress",
-		"feedback"
-	],
+	"main": "build/scrollgress.min.js",
 	"license": "MIT",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests"
+	"keywords": [
+		"reading",
+		"time",
+		"estimated",
+		"eta"
 	]
 }
