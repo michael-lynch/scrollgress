@@ -12,83 +12,96 @@ Licensed under the MIT license
 
 ;(function($) {
 
-    $.fn.scrollgress = function(options) {
-    
-    	//return if no element was bound
-		//so chained events can continue
-		if(!this.length) { 
-			return this; 
+	$.fn.scrollgress = function(options) {
+
+		// return if no element was bound
+		// so chained events can continue
+		if(!this.length) {
+			return this;
 		}
 
-		//define default parameters
-        var defaults = {
-            height: '5px',
-            color: '#ff0000',
-            success: function() {}
-        }
-        
-        //define plugin
-        var plugin = this;
+		// define default parameters
+		const defaults = {
+			height: '5px',
+			color: '#ff0000',
+			el: null,
+			complete: function() {},
+			success: function() {}
+		}
 
-        //define settings
-        plugin.settings = {}
- 
-        //merge defaults and options
-        plugin.settings = $.extend({}, defaults, options);
-        
-        var s = plugin.settings;
+		// define plugin
+		const plugin = this;
 
-        //define element
-        var el = $(this);
+		// define settings
+		plugin.settings = {}
 
-    	var elOverflow = el.css('overflow');
-    	var elOverflowY = el.css('overflow-y');
-    
-    	var hasOverflow = (elOverflow === 'auto' || elOverflow === 'scroll' || elOverflowY === 'auto' || elOverflowY === 'scroll') ? true : false;
-    
-    	var windowHeight = $(window).outerHeight();
-    
-        var heightToScroll = (hasOverflow) ? el[0].scrollHeight : el.height();
-        
-        var elementToScroll = (hasOverflow) ? el : $(window);
-    
-    	var progressBar = '<div class="scrollgress"><div class="scrollgress__progress"></div></div>';
+		// merge defaults and options
+		plugin.settings = $.extend({}, defaults, options);
 
-    	$('body').prepend(progressBar);
-    	
-    	$('.scrollgress').css({
-    		position: 'fixed',
-    		top: '0px',
-    		left: '0px',
-    		background: 'transparent',
-    		width: '100%',
-    		height: s.height
-    	});
-    	
-    	$('.scrollgress__progress').css({
-    		float: 'left',
-    		background: s.color,
-    		width: '0%',
-    		height: s.height
-    	});
-    	
-    	elementToScroll.scroll(function(e) {
-    	
-    		var amountScrolled = (hasOverflow) ? el.scrollTop() : $(document).scrollTop();
+		const s = plugin.settings;
+		const el = $(this);
+		const elOverflow = el.css('overflow');
+		const elOverflowY = el.css('overflow-y');
+		const hasOverflow = (elOverflow === 'auto' || elOverflow === 'scroll' || elOverflowY === 'auto' || elOverflowY === 'scroll') ? true : false;
+		const windowHeight = $(window).outerHeight();
+		const heightToScroll = (hasOverflow) ? el[0].scrollHeight : el.height();
+		const elementToScroll = (hasOverflow) ? el : $(window);
+		const progressBar = '<div class="scrollgress"><div class="scrollgress__progress"></div></div>';
 
-    		// divide the amount of pixels scrolled by the total height to scroll minus the height of the window
-    		// and round the result to two decimal places
-    		var percentScrolled = ((amountScrolled / (heightToScroll - windowHeight)) * 100).toFixed(2);
-    		
-    		console.log(e.originalEvent);
-    		
-    		$('.scrollgress__progress').css({
-        		width: percentScrolled + '%'
-    		});
-        });
-        
-        s.success.call(this);
+		let lastScrollTop = 0;
+		let st;
+		let amountScrolled;
+		let percentScrolled;
 
-    }
+		if(!s.el) {
+
+			$('body').prepend(progressBar);
+
+			$('.scrollgress').css({
+				position: 'fixed',
+				top: '0px',
+				left: '0px',
+				background: 'transparent',
+				width: '100%',
+				height: s.height
+			});
+
+			$('.scrollgress__progress').css({
+				float: 'left',
+				background: s.color,
+				width: '0%',
+				height: s.height
+			});
+
+			// redefine scrollgress element
+			s.el = '.scrollgress__progress';
+		}
+
+		elementToScroll.scroll(function(e) {
+
+			st = elementToScroll.scrollTop();
+			amountScrolled = (hasOverflow) ? el.scrollTop() : $(document).scrollTop();
+
+			// divide the amount of pixels scrolled by the total height to scroll minus the height of the window
+			// and round the result to two decimal places
+			percentScrolled = ((amountScrolled / (heightToScroll - windowHeight)) * 100).toFixed(2);
+
+			$(s.el).css({
+				width: percentScrolled + '%'
+			});
+
+			// if scrolling down and at bottom
+			if($(window).scrollTop() + $(window).height() == $(document).height()) {
+
+				// call complete callback
+				s.complete.call(this);
+			}
+
+			// redefine last scroll top
+			lastScrollTop = st;
+		});
+
+		s.success.call(this);
+	}
 
 })(jQuery);

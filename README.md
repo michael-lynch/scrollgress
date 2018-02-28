@@ -1,15 +1,15 @@
-#Scrollgress
+# Scrollgress
 
 Inspired by [Pitchfork](http://pitchfork.com/features/staff-lists/9466-the-top-200-tracks-of-2010-2014/), Scrollgress is a simple, lightweight jQuery plugin used to display a progress bar at the top of the page that fills up as the user scrolls.
 
-Progress can be measured as the user scrolls the page or an element that has 
+Progress can be measured as the user scrolls the page or an element that has
 <br />`overflow: scroll | auto` or `overflow-y: scroll | auto`.
 
 <a href="http://michael-lynch.github.io/scrollgress/" target="_blank">See a demo</a>
 
 <a href="http://michael-lynch.github.io/scrollgress/overflow.html" target="_blank">See a demo using an overflow element</a>
 
-##Instructions
+## Instructions
 
 Include jQuery and the plugin in the head or footer of your page.
 
@@ -18,14 +18,14 @@ Include jQuery and the plugin in the head or footer of your page.
 
 <script src="/js/plugins/scrollgress.js"></script>
 ```
-    
-Initialize the plugin targeting the class, ID or element that you want to display the scroll progress of. 
+
+Initialize the plugin targeting the class, ID or element that you want to display the scroll progress of.
 
 ```js
 $('body').scrollgress();
 ```
-	
-####Options
+
+#### Options
 
 <ol>
 
@@ -35,20 +35,24 @@ height: "Npx"
 </li>
 
 <li>color: color
-<br />A string that defines the color of the progress bar (default: '#ff0000'). 
+<br />A string that defines the color of the progress bar (default: '#ff0000').
 </li>
 
 <li>success: function()
-<br />A callback function that runs after scrollgress has been initiated (default: function()). 
+<br />A callback function that runs after scrollgress has been initiated (default: function()).
+</li>
+
+<li>complete: function()
+<br />A callback function that runs after you've reached the end of the page (default: function()). 
 </li>
 
 </ol>
 
-#####Example:
+##### Example:
 
 ```js
 $(function() {
-	
+
 	$('.post').scrollgress({
 		height: '10px',
 		color: '#990000',
@@ -56,6 +60,6 @@ $(function() {
 			console.log('Scrollgress has been initiated.');
 		}
 	});
-		
+
 });
 ```		
