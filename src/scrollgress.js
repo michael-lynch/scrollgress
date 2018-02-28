@@ -5,7 +5,7 @@ Dependencies: jQuery
 Author: Michael Lynch
 Author URL: http://michaelynch.com
 Date Created: August 20, 2014
-Last Updated: August 20, 2014
+Last Updated: February 18, 2018
 Licensed under the MIT license
 
 */
